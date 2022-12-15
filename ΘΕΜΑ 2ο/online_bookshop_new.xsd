@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="online_bookshop">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name"/>
+                <xs:element ref="author_list"/>
+                <xs:element ref="Book_categories"/>
+                <xs:element ref="Book_secondary_categories"/>
+                <xs:element ref="book_list"/>
+                <xs:element ref="contact_details"/>
+            </xs:sequence>
+            <xs:attribute name="free_ship" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="name" type="xs:string"/>
+
+    <xs:element name="author_list">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="author"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="author" minOccurs="0">
+        <xs:complexType>
+            <xs:attribute name="auid" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Book_categories">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="book_category"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="book_category" minOccurs="0">
+        <xs:complexType>
+            <xs:attribute name="category_id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Book_secondary_categories">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="secondary_category"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="secondary_category" minOccurs="0">
+        <xs:complexType>
+            <xs:attribute name="sub_cat" type="xs:ID" use="required"/>
+            <xs:attribute name="category" type="xs:IDREFS"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="book_list">
+        <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="book"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="book" minOccurs="0">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="book_titles_info"/>
+                <xs:element ref="authors"/>
+                <xs:element ref="ISBN"/>
+                <xs:element ref="book_descr"/>
+                <xs:element ref="book_characteristics"/>
+                <xs:element ref="cost_information"/>
+                <xs:element ref="other_information"/>
+            </xs:sequence>
+            <xs:attribute name="book_id" type="xs:string"/>
+            <xs:attribute name="sub_cat" type="xs:IDREFS"/>
+            <xs:attribute name="category" type="xs:IDREFS"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="book_titles_info">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:attribute name="title" type="xs:string" use="required"/>
+                <xs:attribute name="subtitle" type="xs:string"/>
+                <xs:attribute name="description label" type="xs:String"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="authors" type="xs:string">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="other_partners"/>
+            </xs:sequence>
+            <xs:attribute name="author_id" type="xs:IDREFS"/>
+            <xs:attribute name="description_label" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="other_partners">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="1">
+                <xs:element ref="illustration"/>
+                <xs:element ref="translation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="illustration" type="xs:string"/>
+    <xs:element name="translation" type="xs:string"/>
+
+    <xs:element name="ISBN">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="book_descr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="summary"/>
+                <xs:element ref="for_ages"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="summary">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="for_ages" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="book_characteristics">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dimensions"/>
+                <xs:element ref="publisher"/>
+                <xs:element ref="pages"/>
+                <xs:element ref="weight"/>
+                <xs:element ref="language"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="dimensions">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="unit" type="xs:string" fixed="cm"/>
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="publisher">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="publisher_year" type="xs:int" use="required"/>
+                    <xs:attribute name="publishing_country" type="xs:string"/>
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="pages">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="weight">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="w_unit" type="xs:string" fixed="gr"/>
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="language">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="cost_information">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="start_value"/>
+                <xs:element ref="end_value"/>
+            </xs:sequence> 
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="start_value">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:int">
+                    <xs:attribute name="currency" type="xs:string" fixed="euros"/>
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="end_value">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:int">
+                    <xs:attribute name="currency" type="xs:string" fixed="euros"/>
+                    <xs:attribute name="percent_of_discount" type="xs:string"/>
+                    <xs:attribute name="withdiscount" fixed="no">
+                        <xs:simpleType>
+                            <xs:restriction base="NMTOKEN">
+                                <xs:enumeration value="yes"/>
+                                <xs:enumeration value="no"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="other_information">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="diathesimotita"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="diathesimotita">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="apostoli_se" type="xs:string"/>
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>          
+    </xs:element>      
+
+
+    <xs:element name="contact_details">
+        <xs:complexContent>
+            <xs:sequence>
+                <xs:element name="address"/>
+                <xs:element name="tel"/>
+                <xs:element name="email"/>
+            </xs:sequence>
+        </xs:complexContent>
+    </xs:element>
+
+    <xs:element name="address">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>          
+    </xs:element>    
+    <xs:element name="tel" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:int">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>          
+    </xs:element> 
+    <xs:element name="email" minOccurs="0" maxOccurs="inbounded">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="description_label" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>          
+    </xs:element> 
+
+</xs:schema>

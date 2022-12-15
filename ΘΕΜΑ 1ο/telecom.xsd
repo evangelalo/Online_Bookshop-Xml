@@ -1,0 +1,426 @@
+X<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="https://www.w3schools.com"
+xmlns="https://www.w3schools.com"
+elementFormDefault="qualified">
+
+ <xs:element name="TELE">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="INFO" type="xs:string"></xs:element>
+  <xs:element name="PROGRAM" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+  <xs:element name="OFFERS" type="xs:integer" minOccurs="1" maxOccurs="unbounded"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+ <xs:element name="INFO">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="NAME" type="xs:string"></xs:element>
+  <xs:element name="YEAR" type="xs:date"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="NAME" type="xs:string" use="required"></xs:attribute>
+  <xs:attribute name="YEAR" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+ <xs:element name="PROGRAM">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="PROGRAMNAME" type="xs:string"></xs:element>
+  <xs:element name="MOBILE" type="xs:string" maxOccurs="1"></xs:element>
+  <xs:element name="PHONE" type="xs:string" maxOccurs="1"></xs:element>
+  <xs:element name="PACKET" type="xs:string"></xs:element>
+  <xs:element name="TIME" type="xs:time"></xs:element>
+  <xs:element name="SRW" type="xs:string" maxOccurs="1"></xs:element>
+  <xs:element name="BENEFITS" type="xs:string"></xs:element>
+  <xs:element name="COST" type="xs:integer"></xs:element>
+  <xs:element name="FEES" type="xs:integer" maxOccurs="1"></xs:element>
+  </xs:sequence>
+ <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="PROGRAMNAME">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="MOBILE1" type="xs:string"></xs:element>
+  <xs:element name="MOBILE2" type="xs:string"></xs:element>
+  <xs:element name="PHONE1" type="xs:string"></xs:element>
+  <xs:element name="PHONE2" type="xs:string"></xs:element>
+  </xs:sequence>
+ <xs:attribute name="MOBILE1" type="xs:string" use="optional"></xs:attribute>
+ <xs:attribute name="MOBILE2" type="xs:string" use="optional"></xs:attribute>
+ <xs:attribute name="PHONE1" type="xs:string" use="optional"></xs:attribute>
+ <xs:attribute name="PHONE2" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="SRW">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="SIM" type="xs:string"></xs:element>
+  <xs:element name="ROUTER" type="xs:string"></xs:element>
+  <xs:element name="WIFI" type="xs:string"></xs:element>
+  </xs:sequence>
+ <xs:attribute name="SIM" type="xs:string" use="optional"></xs:attribute>
+ <xs:attribute name="ROUTER" type="xs:string" use="optional"></xs:attribute>
+ <xs:attribute name="WIFI" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="SIM">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="sim" type="xs:boolean"></xs:element>
+  </xs:sequence>
+ <xs:attribute name="sim" type="xs:boolean" default="false"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="sim">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="simcost" type="xs:integer"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="ROUTER">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="MODELCOST" type="xs:integer"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MODELCOST" type="xs:integer" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="WIFI">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="MODELCOST" type="xs:integer"></xs:element>
+  </xs:sequence>
+ <xs:attribute name="MODELCOST" type="xs:integer" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="FEES">
+ <xs:complexType>
+  <xs:sequence>
+  <xs:element name="STARTFEE" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+  <xs:element name="INSTALFEE" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="MOBILE1">
+ <xs:complexType>
+   <xs:choice>
+   <xs:element name="mobile" type="xs:string"></xs:element>
+   <xs:element name="home_teleph_and_internet" type="xs:string"></xs:element>
+   <xs:element name="TV" type="xs:string"></xs:element>
+   <xs:element name="PERSONALCODE" type="xs:string"></xs:element>
+  </xs:choice>
+  <xs:attribute name="name" type="xs:string" default="mobile"></xs:attribute>
+  <xs:attribute name="PERSONALCODE" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="PHONE1">
+ <xs:complexType>
+   <xs:choice>
+   <xs:element name="mobile" type="xs:string"></xs:element>
+   <xs:element name="home_teleph_and_internet" type="xs:string"></xs:element>
+   <xs:element name="TV" type="xs:string"></xs:element>
+   <xs:element name="PERSONALCODE" type="xs:string"></xs:element>
+  </xs:choice>
+  <xs:attribute name="PERSONALCODE" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="MOBILE2">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="COST1" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="COST1" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="PHONE2">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="COST2" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="COST2" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="mobile">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="DATA" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="MOBILECALLS" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="PHONECALLS" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="LOCALPHONECALLS" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="INTERNPHONECALLS" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="MINLEFT" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="MESSAGES" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="LOCALMESSAGES" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="INTERNATIONALMESSAGES" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="home_teleph_and_internet">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="LOCALPHONECALLS" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="LOCALMOBILECALLS" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="INTERNPHONECALLS" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+   <xs:element name="SPEED" type="xs:integer" minOccurs="0" maxOccurs="1"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="TV">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="CHANNELS" type="xs:integer"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="CHANNELS" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="DATA">
+ <xs:complexType>
+   <xs:choice>
+   <xs:element name="MB" type="xs:string"></xs:element>
+   <xs:element name="GB" type="xs:string"></xs:element>
+  </xs:choice>
+  <xs:attribute name="MB" type="xs:string" use="optional"></xs:attribute>
+  <xs:attribute name="GB" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="MOBILECALLS">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="MINUTES" type="xs:integer"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MINUTES" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="PHONECALLS">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="MINUTES" type="xs:integer"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MINUTES" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="LOCALPHONECALLS">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="MINUTES" type="xs:integer"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MINUTES" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="LOCALMOBILECALLS">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="MINUTES" type="xs:integer"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MINUTES" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="INTERNPHONECALLS">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="MINUTES" type="xs:integer"></xs:element>
+   <xs:element name="COUNTRIES" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MINUTES" type="xs:integer" use="optional"></xs:attribute>
+  <xs:attribute name="COUNTRIES" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="COUNTRIES">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="names" type="xs:string"></xs:element>
+   <xs:element name="whom" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="names" type="xs:string" use="required"></xs:attribute>
+  <xs:attribute name="whom" type="xs:string" default="phone"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="MINLEFT">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="MINUTES" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MINUTES" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="MESSAGES">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="SMS" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="SMS" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="LOCALMESSAGES">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="SMS" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="SMS" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="INTERNATIONALMESSAGES">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="SMS" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="SMS" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="SPEED">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="MBPS" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="MBPS" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="CHANNELS">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="quantity" type="xs:boolean"></xs:element>
+   <xs:element name="children" type="xs:boolean"></xs:element>
+   <xs:element name="sports" type="xs:boolean"></xs:element>
+   <xs:element name="movies" type="xs:boolean"></xs:element>
+  </xs:sequence>
+   <xs:attribute name="quantity" type="xs:boolean" use="required"></xs:attribute>
+  <xs:attribute name="children" type="xs:boolean" use="required"></xs:attribute>
+  <xs:attribute name="sports" type="xs:boolean" use="required"></xs:attribute>
+  <xs:attribute name="movies" type="xs:boolean" default="false"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="quantity">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="BENEFITS" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="children">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="BENEFITS" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="sports">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="BENEFITS" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="movies">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="BENEFITS" type="xs:string" minOccurs="1" maxOccurs="unbounded"></xs:element>
+  </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="COSTCATEGORY">
+ <xs:complexType>
+   <xs:choice>
+   <xs:element name="NEW" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+   <xs:element name="OLD" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+   <xs:element name="COMPANY" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+  </xs:choice>
+   <xs:attribute name="NEW" type="xs:string" use="required"></xs:attribute>
+  <xs:attribute name="OLD" type="xs:string" use="required"></xs:attribute>
+  <xs:attribute name="COMPANY" type="xs:integer" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="OFFERS">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="OFFER" type="xs:integer" minOccurs="0" maxOccurs="unbounded"></xs:element>
+  </xs:sequence>
+ <xs:attribute name="PROGRAMNAME" type="xs:string" use="required"></xs:attribute>
+  <xs:attribute name="NAME" type="xs:string" use="optional"></xs:attribute>
+  <xs:attribute name="PERSONALCODE" type="xs:string" use="required"></xs:attribute>
+  <xs:attribute name="COST" type="xs:integer" use="required"></xs:attribute>
+  <xs:attribute name="FEES" type="xs:integer" use="required"></xs:attribute>
+  <xs:attribute name="COSTCATEGORY" type="xs:string" use="required"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="OFFER">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="OFFER1" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="from" type="xs:date" use="required"></xs:attribute>
+  <xs:attribute name="to" type="xs:date" use="required"></xs:attribute>
+  <xs:attribute name="months" type="xs:integer" use="required"></xs:attribute>
+  <xs:attribute name="PRESENTS" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="OFFER">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="OFFER2" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="from" type="xs:date" use="required"></xs:attribute>
+  <xs:attribute name="to" type="xs:date" use="required"></xs:attribute>
+  <xs:attribute name="months" type="xs:integer" use="required"></xs:attribute>
+  <xs:attribute name="PRESENTS" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="OFFER">
+ <xs:complexType>
+   <xs:sequence>
+   <xs:element name="OFFER3" type="xs:string"></xs:element>
+  </xs:sequence>
+  <xs:attribute name="from" type="xs:date" use="required"></xs:attribute>
+  <xs:attribute name="to" type="xs:date" use="required"></xs:attribute>
+  <xs:attribute name="months" type="xs:integer" use="required"></xs:attribute>
+  <xs:attribute name="PRESENTS" type="xs:integer" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+<xs:element name="PRESENTS">
+ <xs:complexType>
+  <xs:attribute name="TYPE_OF_PRESENT" type="xs:string" use="optional"></xs:attribute>
+ </xs:complexType>
+</xs:element>
+
+</xs:schema>

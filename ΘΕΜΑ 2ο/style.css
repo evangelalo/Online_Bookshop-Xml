@@ -1,0 +1,103 @@
+/*Global Styles*/
+online_bookshop{
+    outline-color: aqua;
+    background-color: gray;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+name{
+    display: block;
+    text-decoration: underline;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: fantasy;
+    color: rgb(74, 76, 194);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+author, Book_categories, Book_secondary_categories {
+    display: none;
+}
+
+address, tel, email{
+    margin-left: 9%;
+}
+
+contact_details{
+    display: block;
+    text-align: left;
+}
+
+/*Books Styles*/
+book{
+    background-color: brown;
+    display: block;
+    border-style: groove;
+    margin-top: 20px;
+}
+
+title{
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+subtitle, authors, ISBN, for_ages, dimensions, publisher, pages, weight, language, start_value, end_value{
+    display: block;
+    text-align: center;
+}
+
+other_partners{
+    display: block;
+}
+
+summary{
+    display: block;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+diathesimotita{
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/*display attributes*/
+subtitle::before, authors::before, ISBN::before, summary::before, for_ages::before, dimensions::before, publisher::before,
+pages::before, weight::before, language::before, start_value::before, end_value::before, diathesimotita::before{
+    display: block;
+    content: attr(description_label);
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+publisher::after{
+    display: block;
+    content: attr(publisher_year);
+}
+
+weight::after{
+    content: attr(w_unit);
+    margin-left: 2px;
+}
+
+start_value::after, end_value::after{
+    content: attr(currency);
+    margin-left: 2px;
+}
+
+address::before, tel::before, email::before{
+    content: attr(description_label);
+    margin-right: 4px;
+}
